@@ -1,0 +1,12 @@
+node
+{
+    stage('GIT')
+    {
+    git credentialsId: '83c0dd38-088c-494d-9150-35b7301324c9', url: 'https://github.com/Sonalp24/SNL_JENKINS.git'
+    }
+    stage('MAVEN_BUILD')
+    {
+    def Mavenpath = tool name: 'SNL_MAVEN', type: 'maven'
+    sh "${Mavenpath}/bin/mvn clean package"
+    }
+}
